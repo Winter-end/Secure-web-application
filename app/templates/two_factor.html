@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Two-Factor Authentication</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+        {% if form.otp.errors %}
+            <ul class="errors">
+                {% for error in form.otp.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <button type="submit">Verify</button>
+    </form>
+{% endblock %}

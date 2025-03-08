@@ -1,0 +1,14 @@
+Flask
+Flask-Login
+Flask-WTF
+Flask-SQLAlchemy
+Werkzeug
+markdown
+pyotp
+WTForms
+bleach
+qrcode
+pillow
+Flask-bcrypt
+PyCryptodome
+gunicorn
