@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ user.username | e }}'s messages</h1>
+    <div class="public-key-container">
+        <h3>Public Key:</h3>
+        <pre class="public-key">{{ user.public_key | e }}</pre>
+    </div>
+
+    {% for message in messages %}
+        <div class="card mb-3">
+            <div class="card-body">
+                {{ message.content | safe }}
+                <p class="card-text"><small class="text-muted">{{ message.timestamp | e }}</small></p>
+                <div class="signature-container">
+                    <strong>Signature (SHA256):</strong>
+                    <pre class="signature" style="max-width: 100%; white-space: pre-wrap;
+                     word-wrap: break-word;">{{ message.signature | e}}</pre>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

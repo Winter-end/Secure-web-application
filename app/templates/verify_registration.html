@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Verify Registration</h1>
+
+    <p>Scan the QR code with your authenticator app and enter the verification code below:</p>
+
+    {% if qr_code %}
+        <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+    {% endif %}
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <label for="otp">Verification Code:</label>
+        {{ form.otp(id="otp", required="required") }}
+        {% if form.otp.errors %}
+            <ul class="errors">
+                {% for error in form.otp.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <button type="submit">Verify</button>
+    </form>
+{% endblock %}

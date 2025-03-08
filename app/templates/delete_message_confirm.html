@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Are you sure you want to delete this message?</h1>
+    <p>{{ message.content | safe }}</p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{{ url_for('user.profile') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Login</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        {% if form.username.errors %}
+            <ul class="errors">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        {% if form.password.errors %}
+            <ul class="errors">
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <button type="submit">Login</button>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+    </form>
+{% endblock %}
